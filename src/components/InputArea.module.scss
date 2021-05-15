@@ -1,0 +1,18 @@
+.root {
+  display: flex;
+  position: relative;
+}
+.input_left {
+  width: 40%;
+  .text_area {
+    width: 100%;
+  }
+}
+.input_right {
+  .button {
+    height: 64%;
+    position: absolute;
+    bottom: 0;
+    left: 42%;
+  }
+}

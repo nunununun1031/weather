@@ -1,0 +1,11 @@
+.root {
+  display: flex;
+  justify-content: space-between;
+  .now_left {
+    width: 48%;
+  }
+  .now_right {
+    width: 48%;
+    height: 200px;
+  }
+}
