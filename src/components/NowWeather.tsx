@@ -2,41 +2,33 @@ import React, { useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
 import styles from "./NowWeather.module.scss";
 
-interface MapCenter {
-  lat: number;
-  lng: number;
-}
+type PROPS = {
+  center: {
+    lat: number;
+    lng: number;
+  };
+};
+// APIの設定
+const googleApiKey = process.env.REACT_APP_GM_API_KEY;
 
-const ApiKey = "AIzaSyD03QZlCyt9rLMfBRhhVuiwEqcPtQOf5oU";
-// const ApiKey = process.env.GOOGLE_MAP_API_KEY;
-// console.log(ApiKey);
-
-const NowWeather = () => {
-  const [center, setCenter] = useState<MapCenter>({
-    lat: 0,
-    lng: 0,
-  });
+const NowWeather: React.VFC<PROPS> = ({ center }) => {
   const [zoom, setZoom] = useState(10);
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (pos) =>
-        setCenter({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
-      (error) => setCenter({ lat: 35.661777, lng: 139.704051 })
-    );
-  }, []);
 
   return (
     <div className={styles.root}>
       <div className={styles.now_left}>
-        <p>Now weather</p>
+        <p>0月0日 現在時刻</p>
+        <h3>現在地</h3>
+        <h1>0℃</h1>
+        <p></p>
+        <p></p>
       </div>
       <div className={styles.now_right}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: ApiKey }}
+        {/* <GoogleMapReact
+          bootstrapURLKeys={{ key: googleApiKey }}
           center={center}
           defaultZoom={zoom}
-        ></GoogleMapReact>
+        ></GoogleMapReact> */}
       </div>
     </div>
   );
