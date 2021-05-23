@@ -6,7 +6,6 @@ import ForecastWeek from "./ForecastWeek";
 const Forecast = () => {
   return (
     <div className={styles.root}>
-      <h2>Forecast</h2>
       <div className={styles.wrapper}>
         <ForecastHour />
         <ForecastWeek />

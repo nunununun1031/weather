@@ -10,6 +10,7 @@ import {
   Legend,
   Bar,
 } from "recharts";
+import { Typography } from "@material-ui/core";
 
 const data = [
   { name: "18時", temperature: 21 },
@@ -24,8 +25,10 @@ const data = [
 
 const ForecastHour = () => {
   return (
-    <div>
-      <h2>Hour</h2>
+    <div className={styles.root}>
+      <Typography className={styles.title} variant="h5">
+        １時間ごとの予測
+      </Typography>
       <LineChart width={600} height={300} data={data}>
         <Legend />
         <Line type="monotone" dataKey="temperature" stroke="#8884d8" />

@@ -7,6 +7,23 @@
     background: linear-gradient(#3e85f6, #8fc2fd80);
     border-radius: 10px;
     color: #48484a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    .now,
+    .circle {
+      font-weight: bold;
+      color: #f09479;
+    }
+    .circle {
+      font-size: 2.5rem;
+    }
+    .temperature {
+      display: flex;
+    }
+    .detailed_status {
+      display: flex;
+    }
   }
   .now_right {
     width: 48%;

@@ -1,0 +1,17 @@
+.root {
+  margin-left: 2rem;
+
+  .title {
+    margin-bottom: 15px;
+  }
+  .days_wrapper {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .day {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+}
