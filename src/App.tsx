@@ -35,20 +35,12 @@ function App() {
     );
   }, []);
 
-  const buttonClick = () => {
+  const buttonClick = async () => {
     const URL = `https://${openWeatherURL}/onecall?lat=${center.lat}&lon=${center.lng}&units=metric&lang=ja&exclude=minutely&appid=${openWeatherApiKey}`;
-    axios
-      .get(URL)
-      .then((res) => {
-        console.log(res.data);
-        setData(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-      .finally(() => {
-        console.log(data);
-      });
+    const result = await axios(URL);
+    setData(result.data);
+    console.log(result.data);
+    console.log(data);
   };
 
   return (
