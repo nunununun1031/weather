@@ -19,7 +19,7 @@ const ForecastWeek = () => {
       </Typography>
       <div className={styles.days_wrapper}>
         {days.map((day) => (
-          <div className={styles.day}>
+          <div className={styles.day} key={day.day}>
             <Typography variant="body1">{day.day}</Typography>
             <Typography variant="body1">{day.temperature}</Typography>
           </div>

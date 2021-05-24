@@ -24,7 +24,7 @@ function App() {
   });
 
   // お天気情報を保持
-  const [data, setData] = useState("");
+  const [data, setData] = useState({});
 
   // 緯度経度の初期値を最初に取得（現在地もしくは東京）
   useEffect(() => {
