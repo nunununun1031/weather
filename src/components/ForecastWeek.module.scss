@@ -12,6 +12,13 @@
     .day {
       display: flex;
       justify-content: space-around;
+
+      .red {
+        color: red;
+      }
+      .blue {
+        color: blue;
+      }
     }
   }
 }

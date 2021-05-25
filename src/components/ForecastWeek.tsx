@@ -2,15 +2,52 @@ import { Typography } from "@material-ui/core";
 import React from "react";
 import styles from "./ForecastWeek.module.scss";
 
-const ForecastWeek = () => {
+type PROPS = {
+  data: any;
+};
+
+const ForecastWeek: React.FC<PROPS> = ({ data }) => {
+  const setDay = (t: any) => {
+    let timeData = new Date(t * 1000);
+    return timeData.toLocaleDateString("ja-JP").slice(5);
+  };
+
   const days = [
-    { day: "４月１日", temperature: "0/0℃" },
-    { day: "４月２日", temperature: "0/0℃" },
-    { day: "４月３日", temperature: "0/0℃" },
-    { day: "４月４日", temperature: "0/0℃" },
-    { day: "４月５日", temperature: "0/0℃" },
-    { day: "４月６日", temperature: "0/0℃" },
-    { day: "４月７日", temperature: "0/0℃" },
+    {
+      day: setDay(data.daily[0].dt),
+      maxTemp: data.daily[0].temp.max,
+      minTemp: data.daily[0].temp.min,
+    },
+    {
+      day: setDay(data.daily[1].dt),
+      maxTemp: data.daily[1].temp.max,
+      minTemp: data.daily[1].temp.min,
+    },
+    {
+      day: setDay(data.daily[2].dt),
+      maxTemp: data.daily[2].temp.max,
+      minTemp: data.daily[2].temp.min,
+    },
+    {
+      day: setDay(data.daily[3].dt),
+      maxTemp: data.daily[3].temp.max,
+      minTemp: data.daily[3].temp.min,
+    },
+    {
+      day: setDay(data.daily[4].dt),
+      maxTemp: data.daily[4].temp.max,
+      minTemp: data.daily[4].temp.min,
+    },
+    {
+      day: setDay(data.daily[5].dt),
+      maxTemp: data.daily[5].temp.max,
+      minTemp: data.daily[5].temp.min,
+    },
+    {
+      day: setDay(data.daily[6].dt),
+      maxTemp: data.daily[6].temp.max,
+      minTemp: data.daily[6].temp.min,
+    },
   ];
   return (
     <div className={styles.root}>
@@ -21,7 +58,10 @@ const ForecastWeek = () => {
         {days.map((day) => (
           <div className={styles.day} key={day.day}>
             <Typography variant="body1">{day.day}</Typography>
-            <Typography variant="body1">{day.temperature}</Typography>
+            <Typography variant="body1">
+              <span className={styles.red}>{Math.floor(day.maxTemp)}</span> /
+              <span className={styles.blue}> {Math.floor(day.minTemp)}</span>℃
+            </Typography>
           </div>
         ))}
       </div>

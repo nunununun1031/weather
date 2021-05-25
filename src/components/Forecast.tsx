@@ -3,12 +3,16 @@ import styles from "./Forecast.module.scss";
 import ForecastHour from "./ForecastHour";
 import ForecastWeek from "./ForecastWeek";
 
-const Forecast = () => {
+type PROPS = {
+  data: any;
+};
+
+const Forecast: React.FC<PROPS> = ({ data }) => {
   return (
     <div className={styles.root}>
       <div className={styles.wrapper}>
-        <ForecastHour />
-        <ForecastWeek />
+        <ForecastHour data={data} />
+        <ForecastWeek data={data} />
       </div>
     </div>
   );

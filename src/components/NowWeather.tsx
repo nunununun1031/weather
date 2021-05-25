@@ -8,32 +8,49 @@ type PROPS = {
     lat: number;
     lng: number;
   };
+  // current: any;
+  current: any;
 };
 // APIの設定
 const googleApiKey = process.env.REACT_APP_GM_API_KEY;
 
-const NowWeather: React.VFC<PROPS> = ({ center }) => {
+const NowWeather: React.VFC<PROPS> = ({ center, current }) => {
   const [zoom, setZoom] = useState(10);
+
+  let timeData = new Date(current.dt * 1000);
 
   return (
     <div className={styles.root}>
       <div className={styles.now_left}>
         <Typography className={styles.now} variant="body1">
-          0月0日 現在時刻
+          {timeData.toLocaleDateString()} 現在時刻
         </Typography>
         <Typography variant="h5">現在地</Typography>
         <Typography variant="h4">
-          <span className={styles.circle}> ●</span> 0℃
+          <span className={styles.circle}> ●</span>{" "}
+          {Math.floor(current.main.temp)}℃
         </Typography>
         <div className={styles.temperature}>
-          <Typography variant="body2">体感温度: 0℃</Typography>
-          <Typography variant="body2">最高温度: 0℃</Typography>
-          <Typography variant="body2">最低温度: 0℃</Typography>
+          <Typography variant="body2">
+            体感温度: {Math.floor(current.main.feels_like)}℃
+          </Typography>
+          <Typography variant="body2">
+            最高温度: {current.main.temp_max}℃
+          </Typography>
+          <Typography variant="body2">
+            最低温度: {current.main.temp_min}℃
+          </Typography>
         </div>
         <div className={styles.detailed_status}>
-          <Typography variant="body2">風: 0m/s 北寄りの風</Typography>
-          <Typography variant="body2">気圧: 0hPa</Typography>
-          <Typography variant="body2">湿度: 0%</Typography>
+          <Typography variant="body2">
+            風: {current.wind.speed}m/s {current.wind.deg}寄りの風
+          </Typography>
+          <Typography variant="body2">
+            気圧: {current.main.pressure}hPa
+          </Typography>
+          <Typography variant="body2">
+            湿度: {current.main.humidity}%
+          </Typography>
         </div>
       </div>
       <div className={styles.now_right}>

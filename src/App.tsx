@@ -4,6 +4,8 @@ import "./App.css";
 import Forecast from "./components/Forecast";
 import InputArea from "./components/InputArea";
 import NowWeather from "./components/NowWeather";
+import { oneCall } from "./data/oneCall";
+import { nowData } from "./data/nowData";
 
 interface MapCenter {
   lat: number;
@@ -22,9 +24,11 @@ function App() {
     lat: 0,
     lng: 0,
   });
+  // one callのデータを保持
+  const [data, setData] = useState(oneCall);
 
-  // お天気情報を保持
-  const [data, setData] = useState({});
+  // 現在のお天気情報を保持(現在の気象データ)
+  const [current, setCurrent] = useState(nowData);
 
   // 緯度経度の初期値を最初に取得（現在地もしくは東京）
   useEffect(() => {
@@ -35,12 +39,28 @@ function App() {
     );
   }, []);
 
-  const buttonClick = async () => {
-    const URL = `https://${openWeatherURL}/onecall?lat=${center.lat}&lon=${center.lng}&units=metric&lang=ja&exclude=minutely&appid=${openWeatherApiKey}`;
-    const result = await axios(URL);
+  // openWeather one call 呼び出し
+  const getWeather = async () => {
+    const URL = `https://${openWeatherURL}/onecall?lat=${center.lat}&lon=${center.lng}&units=metric&lang=ja&exclude=minutely,alerts,current&appid=${openWeatherApiKey}`;
+    const result = await axios.get(URL);
     setData(result.data);
-    console.log(result.data);
+  };
+
+  // openWeather current weather 呼び出し
+  const getCurrent = async () => {
+    const currentURL = `https://${openWeatherURL}/weather?lat=${center.lat}&lon=${center.lng}&units=metric&lang=ja&appid=${openWeatherApiKey}`;
+    const currentResult = await axios.get(currentURL);
+    setCurrent(currentResult.data);
+  };
+
+  const buttonClick = () => {
+    getWeather();
+    getCurrent();
+  };
+
+  const button = () => {
     console.log(data);
+    console.log(current);
   };
 
   return (
@@ -52,9 +72,11 @@ function App() {
           buttonClick={buttonClick}
         />
         <br />
-        <NowWeather center={center} />
+        <NowWeather center={center} current={current} />
         <br />
-        <Forecast />
+        <Forecast data={data} />
+
+        <button onClick={button}>aaaa</button>
       </div>
     </div>
   );
