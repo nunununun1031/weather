@@ -6,7 +6,7 @@
 
 ## イメージ
 
-https://user-images.githubusercontent.com/76551800/119922161-38030680-bfaa-11eb-8b8d-6001390714b7.png"
+(https://user-images.githubusercontent.com/76551800/119922161-38030680-bfaa-11eb-8b8d-6001390714b7.png)
 
 ## 制作目的
 
