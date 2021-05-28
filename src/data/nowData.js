@@ -8,7 +8,7 @@ export const nowData = {
       id: 0,
       main: "",
       description: "",
-      icon: "",
+      icon: "01d",
     },
   ],
   base: "",

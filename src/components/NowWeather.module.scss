@@ -10,13 +10,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    .now,
-    .circle {
+    .now {
       font-weight: bold;
       color: #f09479;
     }
-    .circle {
-      font-size: 2.5rem;
+    .main_data {
+      display: flex;
     }
     .temperature {
       display: flex;

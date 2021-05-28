@@ -2,7 +2,6 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import styles from "./InputArea.module.scss";
 import { Button, TextField } from "@material-ui/core";
-import axios from "axios";
 
 type PROPS = {
   input: string;

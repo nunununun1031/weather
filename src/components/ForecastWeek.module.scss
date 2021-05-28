@@ -1,6 +1,6 @@
 .root {
   margin-left: 2rem;
-
+  width: 20%;
   .title {
     margin-bottom: 15px;
   }
@@ -11,8 +11,8 @@
     justify-content: space-between;
     .day {
       display: flex;
-      justify-content: space-around;
-
+      justify-content: space-between;
+      align-items: center;
       .red {
         color: red;
       }

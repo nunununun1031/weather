@@ -19,7 +19,7 @@ type PROPS = {
 const ForecastHour: React.FC<PROPS> = ({ data }) => {
   const setTime = (t: any) => {
     let timeData = new Date(t * 1000);
-    return timeData.getUTCHours();
+    return timeData.getUTCHours() + 9;
   };
 
   const temp = [

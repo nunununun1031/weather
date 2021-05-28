@@ -14,6 +14,7 @@ interface MapCenter {
 
 const openWeatherApiKey = process.env.REACT_APP_OW_API_KEY;
 const openWeatherURL = process.env.REACT_APP_OW_API_URL;
+const googleApiKey = process.env.REACT_APP_GM_API_KEY;
 
 function App() {
   // 入力値を保持
@@ -30,14 +31,16 @@ function App() {
   // 現在のお天気情報を保持(現在の気象データ)
   const [current, setCurrent] = useState(nowData);
 
-  // 緯度経度の初期値を最初に取得（現在地もしくは東京）
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (pos) =>
-        setCenter({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
-      (error) => setCenter({ lat: 35.6895, lng: 139.6917 })
-    );
-  }, []);
+  // geocodingAPIの取得
+  async function callGeocodingAPI() {
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${input}&language=jp&region=jp&key=${googleApiKey}`;
+    const response = await axios.get(url);
+
+    setCenter({
+      lat: response.data.results[0].geometry.location.lat,
+      lng: response.data.results[0].geometry.location.lng,
+    });
+  }
 
   // openWeather one call 呼び出し
   const getWeather = async () => {
@@ -53,15 +56,26 @@ function App() {
     setCurrent(currentResult.data);
   };
 
+  // 検索ボタンを押した時のイベント設定
   const buttonClick = () => {
+    if (input.trim().length === 0) {
+      return;
+    }
+    callGeocodingAPI();
+  };
+  // 緯度経度の初期値を最初に取得（現在地もしくは東京）
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (pos) =>
+        setCenter({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
+      (error) => setCenter({ lat: 35.6895, lng: 139.6917 })
+    );
+  }, []);
+  // 座標が変わるたびにお天気情報取得
+  useEffect(() => {
     getWeather();
     getCurrent();
-  };
-
-  const button = () => {
-    console.log(data);
-    console.log(current);
-  };
+  }, [center]);
 
   return (
     <div className="App">
@@ -72,11 +86,9 @@ function App() {
           buttonClick={buttonClick}
         />
         <br />
-        <NowWeather center={center} current={current} />
+        <NowWeather center={center} current={current} input={input} />
         <br />
         <Forecast data={data} />
-
-        <button onClick={button}>aaaa</button>
       </div>
     </div>
   );

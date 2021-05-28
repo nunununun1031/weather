@@ -200,7 +200,7 @@ export const oneCall = {
   daily: [
     //   ---------------
     {
-      dt: 0,
+      dt: 1609426800,
       sunrise: 0,
       sunset: 0,
       moonrise: 0,
@@ -230,7 +230,7 @@ export const oneCall = {
           id: 0,
           main: "",
           description: "",
-          icon: "",
+          icon: "01d",
         },
       ],
       clouds: 0,
@@ -240,7 +240,7 @@ export const oneCall = {
     },
     //   ---------------
     {
-      dt: 0,
+      dt: 1609513200,
       sunrise: 0,
       sunset: 0,
       moonrise: 0,
@@ -270,7 +270,7 @@ export const oneCall = {
           id: 1,
           main: "",
           description: "",
-          icon: "",
+          icon: "01d",
         },
       ],
       clouds: 0,
@@ -280,7 +280,7 @@ export const oneCall = {
     },
     //   ---------------
     {
-      dt: 0,
+      dt: 1609599600,
       sunrise: 0,
       sunset: 0,
       moonrise: 0,
@@ -310,7 +310,7 @@ export const oneCall = {
           id: 2,
           main: "",
           description: "",
-          icon: "",
+          icon: "01d",
         },
       ],
       clouds: 0,
@@ -320,7 +320,7 @@ export const oneCall = {
     },
     //   ---------------
     {
-      dt: 0,
+      dt: 1609686000,
       sunrise: 0,
       sunset: 0,
       moonrise: 0,
@@ -350,7 +350,7 @@ export const oneCall = {
           id: 3,
           main: "",
           description: "",
-          icon: "",
+          icon: "01d",
         },
       ],
       clouds: 0,
@@ -360,7 +360,7 @@ export const oneCall = {
     },
     //   ---------------
     {
-      dt: 0,
+      dt: 1609772400,
       sunrise: 0,
       sunset: 0,
       moonrise: 0,
@@ -390,7 +390,7 @@ export const oneCall = {
           id: 4,
           main: "",
           description: "",
-          icon: "",
+          icon: "01d",
         },
       ],
       clouds: 0,
@@ -400,7 +400,7 @@ export const oneCall = {
     },
     //   ---------------
     {
-      dt: 0,
+      dt: 1609858800,
       sunrise: 0,
       sunset: 0,
       moonrise: 0,
@@ -430,7 +430,7 @@ export const oneCall = {
           id: 5,
           main: "",
           description: "",
-          icon: "",
+          icon: "01d",
         },
       ],
       clouds: 0,
@@ -440,7 +440,7 @@ export const oneCall = {
     },
     //   ---------------
     {
-      dt: 0,
+      dt: 1609945200,
       sunrise: 0,
       sunset: 0,
       moonrise: 0,
@@ -470,7 +470,7 @@ export const oneCall = {
           id: 6,
           main: "",
           description: "",
-          icon: "",
+          icon: "01d",
         },
       ],
       clouds: 0,
