@@ -61,7 +61,7 @@ function App() {
     if (input.trim().length === 0) {
       return;
     }
-    callGeocodingAPI();
+    callGeocodingAPI().catch((error) => alert("入力値が正しくありません。"));
   };
   // 緯度経度の初期値を最初に取得（現在地もしくは東京）
   useEffect(() => {
