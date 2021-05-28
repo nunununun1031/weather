@@ -17,7 +17,7 @@ const googleApiKey: any = process.env.REACT_APP_GM_API_KEY;
 
 // 地図の大きさ
 const containerStyle = {
-  width: "100%",
+  width: "400px",
   height: "200px",
 };
 
